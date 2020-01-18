@@ -1,0 +1,11 @@
+@tailwind base;
+
+@tailwind components;
+
+.header {
+  transition: 1s;
+}
+
+@tailwind utilities;
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
