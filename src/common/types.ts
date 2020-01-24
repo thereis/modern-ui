@@ -3,16 +3,9 @@ interface SubPage {
   name: string;
 }
 
-export interface HeaderProps {
-  collapsed?: boolean;
-  toggleSidebar: (visible: boolean) => void;
-  subPages?: SubPage[];
-}
-
 export interface MainLayoutProps {
   children: React.ReactNode;
   headerVisible?: boolean;
-  headerCollapsed?: boolean;
   subPages?: SubPage[];
 }
 
@@ -30,4 +23,16 @@ export interface BackdropProps {
 
 export interface FriendlistItemProps {
   user: { username: string; look: string | undefined; isOnline: boolean };
+}
+
+export interface NewsCategory {
+  id: string;
+  name: string;
+  selected: boolean;
+  color: string;
+}
+
+export interface NewsCatButtonProps {
+  newsCategory: NewsCategory;
+  toggleCategory: (selectedCategory: NewsCategory) => void;
 }
