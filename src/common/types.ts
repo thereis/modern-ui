@@ -13,10 +13,6 @@ export interface ProfilePictureProps {
   figure?: string;
 }
 
-export interface SidebarProps {
-  toggleSidebar: (visible: boolean) => void;
-}
-
 export interface BackdropProps {
   toggleSidebar: (visible: boolean) => void;
 }

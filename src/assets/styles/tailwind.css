@@ -6,6 +6,81 @@
   transition: 1s;
 }
 
+.sidebar-enter {
+  @apply w-0;
+}
+.sidebar-enter-active {
+  @apply w-2/3;
+  transition: width 200ms;
+}
+.sidebar-enter-done {
+  @apply w-2/3;
+}
+.sidebar-exit {
+  @apply w-2/3;
+}
+.sidebar-exit-active {
+  @apply w-0;
+  transition: width 200ms;
+}
+
+.transition-opacity-enter {
+  @apply opacity-0;
+}
+
+.transition-opacity-enter-active {
+  @apply opacity-100;
+  transition: opacity 100ms;
+}
+
+.transition-opacity-enter-done {
+  @apply opacity-100;
+}
+
+.transition-opacity-exit {
+  @apply opacity-100;
+}
+
+.transition-opacity-exit-active {
+  @apply opacity-0;
+  transition: opacity 100ms;
+}
+
+/* Apply arrow to user hovercard */
+
+.user-hovercard:after,
+.user-hovercard:before {
+  top: 100%;
+  left: 8%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.user-hovercard:after {
+  border-color: rgba(237, 242, 247, 0);
+  border-top-color: #edf2f7;
+  border-width: 6px;
+  margin-left: -6px;
+}
+.user-hovercard:before {
+  border-color: rgba(203, 213, 224, 0);
+  border-top-color: #cbd5e0;
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.article-container__indicator {
+  transition: opacity 0.1s;
+}
+
+.bg-fade {
+  transition: 0.1s;
+}
+
 @tailwind utilities;
 
 @import "~@fortawesome/fontawesome-free/css/all.css";

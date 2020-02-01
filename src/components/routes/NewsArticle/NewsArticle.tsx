@@ -1,9 +1,10 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import MainLayout from "components/layout/MainLayout";
 
 const NewsArticle = withRouter(({ history }) => {
   return (
-    <div>
+    <MainLayout>
       <div
         className="w-full h-40 flex flex-col justify-between bg-center border-b-2 border-gray-400"
         style={{ backgroundImage: `url(/assets/images/news_images/lpromo_bawwalleeventfeb.png)` }}
@@ -49,7 +50,7 @@ const NewsArticle = withRouter(({ history }) => {
           Show comments (24) <i className="fas fa-angle-down ml-1 self-center"></i>
         </button>
 
-        <p className="text-gray-600 text-sm px-2 pt-2">
+        <div className="text-gray-600 text-sm px-2 pt-2">
           <h2 className="text-gray-700 font-semibold text-lg">Header2</h2>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima consectetur eligendi
           deleniti amet perspiciatis aliquid corrupti laborum impedit. Velit iste corporis
@@ -81,14 +82,14 @@ const NewsArticle = withRouter(({ history }) => {
           optio? Facilis porro repellat veritatis.
           <br />
           <br />
-        </p>
+        </div>
       </div>
       <div className="mt-2">
         <h4 className="text-gray-500 my-1 self-center text-xs font-semibold self-center">
           Other articles
         </h4>
       </div>
-    </div>
+    </MainLayout>
   );
 });
 
