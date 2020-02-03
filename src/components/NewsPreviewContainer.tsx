@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BackgroundImage } from "react-image-and-background-image-fade";
 
@@ -31,34 +31,39 @@ const NewsPreviewContainer = () => {
 
   return (
     <>
-      <BackgroundImage
-        src={`/assets/images/topstory/${currentArticle.img}`}
-        className="w-full h-40 bg-gray-400 rounded-t flex flex-col justify-between p-2"
-        // style={{ backgroundImage: `url(/assets/images/topstory/${currentArticle.img})` }}
-      >
-        <div>
-          <h3 className="text-white text-lg font-semibold">{currentArticle.title}</h3>
-          <p className="text-white text-xs leading-snug">{currentArticle.desc}</p>
-        </div>
-        <div className="flex justify-between">
-          <div className="flex self-center">
-            {articles.map(article => (
-              <div
-                key={article.id}
-                className={`article-container__indicator bg-white ${
-                  article.id === currentArticle.id ? "" : "opacity-25"
-                } h-2 w-2 rounded-sm self-end mr-px`}
-              ></div>
-            ))}
-          </div>
-          <Link
-            to={`community/news/${currentArticle.id}`}
-            className="p-1 bg-fade text-xs text-white hover:bg-gray-600 rounded"
+      {articles.map(article => {
+        if (article.id !== currentArticle.id) return;
+
+        return (
+          <div
+            // src={`/assets/images/topstory/${article.img}`}
+            className="w-full h-40 bg-gray-400 rounded-t flex flex-col justify-between p-2 bg-center"
+            style={{ backgroundImage: `url(/assets/images/topstory/${currentArticle.img})` }}
           >
-            Read Article
-          </Link>
-        </div>
-      </BackgroundImage>
+            <div>
+              <h3 className="text-white text-lg font-semibold">{currentArticle.title}</h3>
+              <p className="text-white text-xs leading-snug">{currentArticle.desc}</p>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex self-center">
+                {articles.map(article => (
+                  <div
+                    key={article.id}
+                    className={`article-container__indicator bg-white  h-2 w-2 rounded-sm self-end mr-px
+                    ${article.id === currentArticle.id ? "" : "opacity-25"}`}
+                  ></div>
+                ))}
+              </div>
+              <Link
+                to={`community/news/${currentArticle.id}`}
+                className="p-1 bg-fade text-xs text-white hover:bg-gray-600 rounded"
+              >
+                Read Article
+              </Link>
+            </div>
+          </div>
+        );
+      })}
       <div className="pt-1">
         {articles.map(article => (
           <Link
