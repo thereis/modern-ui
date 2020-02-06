@@ -20,6 +20,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children, value }) =
 export const useUserState = () => {
   const context = useContext(UserContext);
 
+  // Throw error if used outside the User provider
   if (context === undefined) throw new Error("useUserState must be used within a UserProvider");
 
   return context;
