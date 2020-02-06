@@ -49,10 +49,16 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
         className="w-full lg:h-32 bg-blue-200 bg-center border-b border-gray-400 shadow lg:shadow-none"
         style={isDayTime() ? headerBackgroundDay : headerBackgroundNight}
       >
-        <div className="lg:flex hidden max-w-4xl mx-auto">
+        <div className="lg:flex hidden h-full max-w-4xl mx-auto">
           <div className="w-full flex justify-between">
-            <div className="font-semibold flex text-white"></div>
-            <div className="flex justify-end mt-12">
+            <div className="font-semibold flex text-white">
+              <div className="flex self-center hover:bg-gray-200 py-2 px-1 rounded">
+                <Link to="/">
+                  <img src="/assets/images/logo/logo.gif" alt="Hotel logo" />
+                </Link>
+              </div>
+            </div>
+            <div className="flex justify-end self-center">
               <HeaderDropDown />
             </div>
           </div>
@@ -129,16 +135,31 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
       <div className="bg-white w-full rounded-b border-b border-r border-l border-gray-400 py-1 hidden lg:block">
         <div className="max-w-4xl mx-auto">
           <nav className="w-full flex text-xs font-semibold text-gray-500">
-            {subTwoPages.map(page => (
-              <NavLink
-                to={page.url}
-                key={page.name}
-                className="py-2 px-4 rounded hover:bg-gray-100"
-              >
-                {page.icon && <i className={` ${page.icon} mr-2 `}></i>}
-                {page.name}
+            <div className="flex flex-1">
+              {subTwoPages.map(page => (
+                <NavLink
+                  to={page.url}
+                  key={page.name}
+                  className="py-2 px-4 rounded hover:bg-gray-100"
+                >
+                  {page.icon && <i className={` ${page.icon} mr-2 `}></i>}
+                  {page.name}
+                </NavLink>
+              ))}
+            </div>
+
+            {/* Show login button if guest */}
+            <div className="flex">
+              <NavLink to="#" className="py-2 px-4 rounded hover:bg-gray-100 bg-fade">
+                Sign up
               </NavLink>
-            ))}
+              <NavLink
+                to="#"
+                className="py-2 px-4 text-white rounded hover:bg-blue-600 bg-blue-400 mr-1"
+              >
+                Login
+              </NavLink>
+            </div>
           </nav>
         </div>
       </div>
