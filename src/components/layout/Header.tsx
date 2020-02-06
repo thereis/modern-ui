@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
   ];
 
   const subTwoPages = [
-    { url: "/me", name: "Home", icon: "fas fa-home" },
+    { url: "/me", name: "Home", icon: "fas fa-home", active: true },
     { url: "/profile/:id", name: "My Profile", icon: "fas fa-user" },
     { url: "#", name: "Community", icon: "fas fa-users" },
     { url: "#", name: "Help", icon: "fas fa-question-mark" }
@@ -46,13 +46,13 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
   return (
     <div className="w-full sticky top-0 z-10">
       <div
-        className="w-full lg:h-32 bg-blue-200 bg-center border-b border-gray-400 shadow lg:shadow-none"
+        className="w-full lg:h-24 bg-blue-200 bg-center border-b border-gray-400 shadow lg:shadow-none"
         style={isDayTime() ? headerBackgroundDay : headerBackgroundNight}
       >
         <div className="lg:flex hidden h-full max-w-4xl mx-auto">
           <div className="w-full flex justify-between">
             <div className="font-semibold flex text-white">
-              <div className="flex self-center hover:bg-gray-200 py-2 px-1 rounded">
+              <div className="flex self-center hover:bg-fadedwhite-100 py-2 px-1 rounded">
                 <Link to="/">
                   <img src="/assets/images/logo/logo.gif" alt="Hotel logo" />
                 </Link>
@@ -140,7 +140,8 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
                 <NavLink
                   to={page.url}
                   key={page.name}
-                  className="py-2 px-4 rounded hover:bg-gray-100"
+                  className={`${page.active &&
+                    "text-blue-500"} py-2 px-4 rounded hover:bg-gray-100`}
                 >
                   {page.icon && <i className={` ${page.icon} mr-2 `}></i>}
                   {page.name}

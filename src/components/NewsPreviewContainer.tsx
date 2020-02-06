@@ -55,14 +55,14 @@ const NewsPreviewContainer = () => {
                 {articles.map(article => (
                   <div
                     key={article.id}
-                    className={`article-container__indicator bg-white  h-2 w-2 rounded-sm self-end mr-px
+                    className={`article-container__indicator bg-white h-2 w-2 rounded-sm self-end mr-px
                     ${article.id === currentArticle.id ? "" : "opacity-25"}`}
                   ></div>
                 ))}
               </div>
               <Link
                 to={`community/news/${currentArticle.id}`}
-                className="p-1 bg-fade text-xs text-white hover:bg-gray-600 rounded"
+                className="p-1 bg-fade text-xs text-white hover:bg-fadedwhite-200 rounded"
               >
                 Read Article
               </Link>

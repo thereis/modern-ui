@@ -10,7 +10,7 @@ const HeaderDropDown = () => {
 
   return (
     <div
-      className="bg-gray-200 border border-gray-400 rounded shadow relative  inline-block w-40 "
+      className="bg-fadedwhite-100 rounded shadow relative  inline-block w-40 "
       onMouseEnter={() => setVisible(!visible)}
       onMouseLeave={() => setVisible(!visible)}
     >
@@ -19,9 +19,9 @@ const HeaderDropDown = () => {
           visible ? " rounded-t" : " rounded"
         } border-gray-400   z-50`}
       >
-        <button className="flex">
+        <button className="flex p-1">
           <ProfilePicture figure={process.env.REACT_APP_HABBO_FIGURE} />
-          <span className=" self-center mx-1 font-semibold text-sm">
+          <span className="text-white self-center mx-1 font-semibold text-sm">
             {user.username && user.username}
           </span>
         </button>
