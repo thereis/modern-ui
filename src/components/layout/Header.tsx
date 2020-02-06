@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCollapseOnScroll } from "hooks/useCollapseOnScroll";
 import ProfilePicture from "components/shared/ProfilePicture";
 import isDayTime from "utils/isDayTime";
 import HeaderDropDown from "./HeaderDropDown";
+import { useUserState } from "context/UserContext";
 
 interface HeaderProps {
   collapsed?: boolean;
@@ -29,9 +30,18 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
     { url: "/me/badges", name: "Badges" }
   ];
 
+  const subTwoPages = [
+    { url: "/me", name: "Home", icon: "fas fa-home" },
+    { url: "/profile/:id", name: "My Profile", icon: "fas fa-user" },
+    { url: "#", name: "Community", icon: "fas fa-users" },
+    { url: "#", name: "Help", icon: "fas fa-question-mark" }
+  ];
+
   const isScrolled = useCollapseOnScroll();
 
   const isCollapsed = !isHomepage || isScrolled;
+
+  const user = useUserState();
 
   return (
     <div className="w-full sticky top-0 z-10">
@@ -68,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
               </i>
             )}
           </button>
-          <h3 className="self-center text-white font-semibold">Chuckie</h3>
+          <h3 className="self-center text-white font-semibold">{user.username && user.username}</h3>
           <Link
             to="settings"
             className="text-lg text-white self-center w-8 h-8 p-2 flex justify-center"
@@ -114,12 +124,19 @@ const Header: React.FC<HeaderProps> = ({ collapsed = true, toggleSidebar, isHome
             ))}
         </div>
       </div>
+
+      {/* Subnav (:lg screens) */}
       <div className="bg-white w-full rounded-b border-b border-r border-l border-gray-400 py-1 hidden lg:block">
         <div className="max-w-4xl mx-auto">
           <nav className="w-full flex text-xs font-semibold text-gray-500">
-            {["Home", "My Profile", "Community", "Help"].map(name => (
-              <NavLink to="/#" key={name} className="py-2 px-4 rounded hover:bg-gray-100">
-                {name}
+            {subTwoPages.map(page => (
+              <NavLink
+                to={page.url}
+                key={page.name}
+                className="py-2 px-4 rounded hover:bg-gray-100"
+              >
+                {page.icon && <i className={` ${page.icon} mr-2 `}></i>}
+                {page.name}
               </NavLink>
             ))}
           </nav>

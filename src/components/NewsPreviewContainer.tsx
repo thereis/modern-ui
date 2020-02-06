@@ -29,6 +29,12 @@ const NewsPreviewContainer = () => {
 
   const [currentArticle, setCurrentArticle] = useState(articles[0]);
 
+  let test = currentArticle.img;
+
+  useEffect(() => {
+    test = currentArticle.img;
+  }, [currentArticle]);
+
   return (
     <>
       {articles.map(article => {
@@ -38,7 +44,7 @@ const NewsPreviewContainer = () => {
           <div
             // src={`/assets/images/topstory/${article.img}`}
             className="w-full h-40 bg-gray-400 rounded-t flex flex-col justify-between p-2 bg-center"
-            style={{ backgroundImage: `url(/assets/images/topstory/${currentArticle.img})` }}
+            style={{ backgroundImage: `url(/assets/images/topstory/${test})` }}
           >
             <div>
               <h3 className="text-white text-lg font-semibold">{currentArticle.title}</h3>

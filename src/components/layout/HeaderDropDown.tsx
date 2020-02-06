@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ProfilePicture from "components/shared/ProfilePicture";
 import { Link } from "react-router-dom";
+import { useUserState } from "context/UserContext";
 
 const HeaderDropDown = () => {
   const [visible, setVisible] = useState(false);
+
+  const user = useUserState();
 
   return (
     <div
@@ -18,7 +21,9 @@ const HeaderDropDown = () => {
       >
         <button className="flex">
           <ProfilePicture figure={process.env.REACT_APP_HABBO_FIGURE} />
-          <span className="text-white self-center mx-1 font-semibold text-sm">Chuckie</span>
+          <span className="text-white self-center mx-1 font-semibold text-sm">
+            {user.username && user.username}
+          </span>
         </button>
       </div>
       {visible && (
