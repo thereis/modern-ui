@@ -1,9 +1,23 @@
-import React from "react";
-import { render } from "react-dom";
-import "./assets/styles/index.css";
-import { App } from "./components/App";
-import * as serviceWorker from "./serviceWorker";
+import * as React from 'react';
+import { render } from 'react-dom';
+import * as serviceWorker from './serviceWorker';
 
-render(<App />, document.getElementById("root"));
+/**
+ * Components
+ */
+import { App } from './components/App';
+import { AppProvider } from 'context/app.context';
+
+/**
+ * Styles
+ */
+import './assets/styles/index.css';
+
+render(
+  <AppProvider>
+    <App />
+  </AppProvider>,
+  document.getElementById('root')
+);
 
 serviceWorker.unregister();
