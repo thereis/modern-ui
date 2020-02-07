@@ -1,17 +1,16 @@
-import React, { useState, useContext } from "react";
-import ProfilePicture from "components/shared/ProfilePicture";
-import { Link } from "react-router-dom";
-import { useUserState } from "context/UserContext";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAppState } from 'context/app.context';
 
 const HeaderDropDown = () => {
   const [visible, setVisible] = useState(false);
 
-  const user = useUserState();
+  const { user } = useAppState();
 
   const habboFigure = {
     backgroundImage: `url("https://www.habbo.nl/habbo-imaging/avatarimage?figure=${process.env.REACT_APP_HABBO_FIGURE}&size=s")`,
-    backgroundPositionY: "-4px",
-    backgroundPositionX: "1px"
+    backgroundPositionY: '-4px',
+    backgroundPositionX: '1px'
   };
   return (
     <div
@@ -21,7 +20,7 @@ const HeaderDropDown = () => {
     >
       <div
         className={`w-full relative flex ${
-          visible ? " rounded-t" : " rounded"
+          visible ? ' rounded-t' : ' rounded'
         } border-gray-400   z-50`}
       >
         <button className="flex p-1 w-full justify-between">
@@ -31,12 +30,16 @@ const HeaderDropDown = () => {
           ></div>
           <div className="flex flex-col w-full self-center">
             <span className="text-white text-center flex-grow self-center mx-1 font-semibold text-sm">
-              {user.username && user.username}
+              {user?.username}
             </span>
             <div
-              className={`${visible ? "h-2" : "h-0"} overflow-hidden flex justify-center bg-fade`}
+              className={`${
+                visible ? 'h-2' : 'h-0'
+              } overflow-hidden flex justify-center bg-fade`}
             >
-              <i className={`fas fa-caret-down self-center text-xs text-fadedwhite-500 mr-2`}></i>
+              <i
+                className={`fas fa-caret-down self-center text-xs text-fadedwhite-500 mr-2`}
+              ></i>
             </div>
           </div>
         </button>
@@ -44,13 +47,22 @@ const HeaderDropDown = () => {
       {visible && (
         <div className="absolute w-full">
           <div className="mt-2 p-1 flex shadow flex-col bg-gray-100 border border-gray-400 w-full rounded">
-            <Link className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200" to="#">
+            <Link
+              className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200"
+              to="#"
+            >
               Inbox
             </Link>
-            <Link className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200" to="#">
+            <Link
+              className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200"
+              to="#"
+            >
               Settings
             </Link>
-            <Link className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200" to="#">
+            <Link
+              className="p-1 text-xs text-gray-500 rounded hover:bg-gray-200"
+              to="#"
+            >
               Log out
             </Link>
           </div>

@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-image-and-background-image-fade": "^1.0.4",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "react-transition-group": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,13 +35,18 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
-    "@types/prop-types": "^15.7.3",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.9.0",
     "@types/node": "^12.12.24",
+    "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.3",
+    "@types/react-transition-group": "^4.2.3",
     "postcss-cli": "^7.1.0",
+    "prop-types": "^15.7.2",
     "tailwindcss": "^1.1.4",
     "typescript": "^3.7.4"
   }
